@@ -34,16 +34,26 @@ body{
     align-items: center;
     cursor: pointer;
 }
-.box:hover{
-    box-shadow: inset 11px 11px 12px 6px rgba(0, 0, 0, 0.39) ;
+.boxHoverForcross{
+
+    box-shadow: var(--boxShadow, gold 0px 0px 6px 6px) ;
     transition: box-shadow ease 150ms;
 }
+.boxHoverForcircle{
+    box-shadow: var(--boxShadow, #2701ff 0px 0px 6px 6px) ;
+    transition: box-shadow ease 150ms;
+}
+/* .box:hover{
+    box-shadow: gold 0px 0px 6px 6px ;
+    box-shadow: var(--boxShadow, gold 0px 0px 6px 6px) ;
+    transition: box-shadow ease 150ms;
+} */
 #heading{
     font-size: 4rem;
     margin-bottom: 15px;
     font-family: 'Josefin Sans', sans-serif;
     color: gold;
-    text-shadow: 1px 1px 1px gold;
+    text-shadow: 0px 0px 8px gold;
 }
 #info{
     font-size: 2rem;
