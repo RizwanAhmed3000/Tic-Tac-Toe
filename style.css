@@ -1,10 +1,10 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body{
+body {
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -12,7 +12,8 @@ body{
     flex-direction: column;
     background: linear-gradient(to left, #8e2de2, #4a00e0);
 }
-#gameBoard{
+
+#gameBoard {
     width: 400px;
     height: 400px;
     display: flex;
@@ -21,12 +22,12 @@ body{
     border-radius: 5px;
 }
 
-.box{
+.box {
     width: 120px;
     height: 120px;
     box-sizing: border-box;
-    background-color: white; 
-    border-radius: 5px ; 
+    background-color: white;
+    border-radius: 5px;
     transition: box-shadow ease 150ms;
     margin: 5px;
     display: flex;
@@ -34,61 +35,73 @@ body{
     align-items: center;
     cursor: pointer;
 }
-.boxHoverForcross{
 
-    box-shadow: var(--boxShadow, gold 0px 0px 6px 6px) ;
+.boxHoverForcross {
+
+    box-shadow: var(--boxShadow, gold 0px 0px 6px 6px);
     transition: box-shadow ease 150ms;
 }
-.boxHoverForcircle{
-    box-shadow: var(--boxShadow, rgb(255, 50, 50) 0px 0px 6px 6px) ;
+
+.boxHoverForcircle {
+    box-shadow: var(--boxShadow, rgb(255, 50, 50) 0px 0px 6px 6px);
     transition: box-shadow ease 150ms;
 }
-#heading{
+
+#heading {
     font-size: 4rem;
     margin-bottom: 15px;
     font-family: 'Josefin Sans', sans-serif;
     color: gold;
     text-shadow: 0px 0px 8px gold;
 }
-#info{
+
+#info {
     font-size: 2rem;
     margin-top: 15px;
     font-family: 'Josefin Sans', sans-serif;
     color: white;
 }
-.circle{
+
+.circle {
     width: 90px;
     height: 90px;
     border-radius: 50%;
     border: 15px solid rgb(255, 50, 50);
     box-sizing: border-box;
 }
-.cross{
+
+.cross {
     width: 90px;
     height: 90px;
     position: relative;
 }
-.cross::before, .cross::after{
+
+.cross::before,
+.cross::after {
     content: '';
     position: absolute;
     transform: rotate(45deg);
     background-color: #f5af19;
 }
-.cross::before{
+
+.cross::before {
     left: 50%;
     width: 30%;
     margin-left: -15%;
     height: 100%;
 }
-.cross::after{
+
+.cross::after {
     top: 50%;
     height: 30%;
     margin-top: -15%;
     width: 100%;
 
 }
-.winPopUp{
-    width: 50%;
+
+
+.winPopUp {
+    width: 60%;
     height: 40%;
     position: absolute;
     z-index: 20;
@@ -96,40 +109,53 @@ body{
     justify-content: center;
     align-items: center;
     border-top-left-radius: 50px;
-    border-bottom-right-radius: 50px ;
+    border-bottom-right-radius: 50px;
     backdrop-filter: blur(6px) saturate(50%);
     -webkit-backdrop-filter: blur(6px) saturate(50%);
     background-color: rgba(53, 53, 53, 0.5);
     transform: scale(1);
     text-shadow: 0px 0px 20px rgb(255, 50, 50);
-    transition: transform ease 250ms;
+    transition: transform ease 350ms;
 }
-.winPopUp h1{
-    font-size: 5rem;
+
+.winPopUp h1 {
+    font-size: 4rem;
     font-family: 'Josefin Sans', sans-serif;
     color: white;
-    animation: scaling 3s infinite ease;    
+    animation: scaling 3s infinite ease;
 }
+
 @keyframes scaling {
-    0% {transform: scale(0.7);}
-    50% {transform: scale(1);}
-    100% {transform: scale(0.7);}
-    
+    0% {
+        transform: scale(0.7);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0.7);
+    }
+
 }
-.overlay{
+
+.overlay {
     position: absolute;
     width: 100%;
     height: 100vh;
     background-color: black;
     opacity: 0.2;
 }
-.hidden{
+
+.hidden {
     transform: scale(0);
-    transition: transform ease 250ms;
+    transition: transform ease 350ms;
 }
+
 button {
     align-items: center;
-    background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+    background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
     position: absolute;
     border: 0;
     border-radius: 8px;
@@ -153,26 +179,52 @@ button {
     transition: all .3s;
     z-index: 21;
     bottom: 15px;
-   }
-   
-   button:active,
-   button:hover {
+}
+
+button:active,
+button:hover {
     outline: 0;
-   }
-   
-   button span {
+}
+
+button span {
     background-color: rgb(5, 6, 45);
     padding: 16px 24px;
     border-radius: 6px;
     width: 100%;
     height: 100%;
     transition: 300ms;
-   }
-   
-   button:hover span {
+}
+
+button:hover span {
     background: none;
-   }
-   
-   button:active {
+}
+
+button:active {
     transform: scale(0.9);
-   }
+}
+
+
+/* SmartPhone */
+@media(min-width: 320px) and (max-width: 500px) {
+    #gameBoard{
+        width: 318px;
+        justify-content: center;
+    }
+    .box{
+        width: 100px;
+        margin: 3px;
+    }
+    .winPopUp{
+        width: 100%;
+    }
+    .winPopUp h1{
+        font-size: 4rem;
+    }
+}
+
+/* tablet */
+@media(min-width: 501px) and (max-width: 768px){
+    .winPopUp{
+        width: 85%;
+    }
+}
