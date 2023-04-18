@@ -1,11 +1,18 @@
 const info = document.querySelector('#info');
 let boxes = document.querySelectorAll('.box');
-// console.log(boxes);
 let move = "circle";
+let winPopUp = document.querySelector('.winPopUp')
+let winner = document.querySelector('.winner')
+let overlay = document.querySelector('.overlay')
+let playAgain = document.querySelector('.playAgain')
 info.innerHTML = "Circle goes first"
+// console.log(winner.textContent = 'bye');
+// console.log(overlay)
 // let boxHover = Array.from(boxes)
 
-
+playAgain.addEventListener('click', ()=>{
+    location.reload()
+})
 
 
 boxes.forEach((cell, index) => {
@@ -31,7 +38,6 @@ function yourMove(element) {
     } else {
         move = 'cross'
     }
-    // hoverBoxes(move)
     info.innerHTML = `It is now ${move}'s turn`
     element.target.removeEventListener('click', yourMove)
     checkScore();
@@ -56,6 +62,10 @@ function checkScore() {
 
         if (circleWins) {
             info.innerHTML = `Circle Wins`
+            overlay.classList.remove('hidden')
+            winPopUp.classList.remove('hidden')
+            winner.innerHTML = 'Circle'
+
             allBoxes.forEach(box =>
                 box.replaceWith(box.cloneNode(true)));
             return
@@ -68,6 +78,10 @@ function checkScore() {
             allBoxes[cell].firstChild?.classList.contains('cross'));
         if (crossWins) {
             info.innerHTML = `Cross Wins`
+            overlay.classList.remove('hidden')
+            winPopUp.classList.remove('hidden')
+            winner.innerHTML = 'Cross'
+            winPopUp.style.textShadow = '0px 0px 20px gold'
             allBoxes.forEach(box =>
                 box.replaceWith(box.cloneNode(true)));
             return
